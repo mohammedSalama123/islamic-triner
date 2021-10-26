@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islamic_triner/screens/home_screen.dart';
+import 'package:islamic_triner/screens/quran/surah_detels_screen.dart';
 import 'package:islamic_triner/them.dart';
 
 void main() {
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         HomeScreen.routName: (context) => HomeScreen(),
+        SurahDatailsScreen.routName: (context) => SurahDatailsScreen(),
       },
       initialRoute: HomeScreen.routName,
     );

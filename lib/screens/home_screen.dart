@@ -26,6 +26,15 @@ class _HomeScreenState extends State<HomeScreen> {
           fit: BoxFit.cover,
         ),
         Scaffold(
+          appBar: AppBar(
+            elevation: 0,
+            centerTitle: true,
+            backgroundColor: Colors.transparent,
+            title: Text(
+              'Islami',
+              style: TextStyle(color: MyThemDate.titleAppBarColor),
+            ),
+          ),
           backgroundColor: Colors.transparent,
           bottomNavigationBar: Theme(
             data: Theme.of(context).copyWith(
@@ -65,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          body: getCurrentPage(),
+          body: Container(child: getCurrentPage()),
         ),
       ],
     );
