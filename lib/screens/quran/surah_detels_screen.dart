@@ -17,8 +17,9 @@ class _SurahDatailsScreenState extends State<SurahDatailsScreen> {
   @override
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as SurahDatailsArgs;
-    loadSurahDatiles(args.surahIndex);
-
+    if (verses.isEmpty) {
+      loadSurahDatiles(args.surahIndex);
+    }
     return Stack(
       children: [
         Image.asset(
@@ -48,7 +49,9 @@ class _SurahDatailsScreenState extends State<SurahDatailsScreen> {
               color: Colors.white,
             ),
             child: verses.isEmpty
-                ? Center(child: CircularProgressIndicator())
+                ? Center(
+                    child: CircularProgressIndicator(),
+                  )
                 : ListView.separated(
                     separatorBuilder: (context, index) {
                       return Container(
