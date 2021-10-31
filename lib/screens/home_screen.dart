@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamic_triner/screens/hadith/hadith_tab.dart';
 import 'package:islamic_triner/screens/quran/quran_tab.dart';
 import 'package:islamic_triner/screens/radio/radio_tab.dart';
@@ -31,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
             centerTitle: true,
             backgroundColor: Colors.transparent,
             title: Text(
-              'Islami',
+              AppLocalizations.of(context)!.app_title,
               style: TextStyle(color: MyThemDate.titleAppBarColor),
             ),
           ),
@@ -46,48 +47,44 @@ class _HomeScreenState extends State<HomeScreen> {
                 setState(() {});
               },
               currentIndex: currentpage,
-              items: const [
+              items: [
                 BottomNavigationBarItem(
-                  icon: ImageIcon(
+                  icon: const ImageIcon(
                     AssetImage('assets/images/icon_moshaf.png'),
                   ),
-                  label: 'Alquran',
+                  label: AppLocalizations.of(context)!.quran_tab,
                 ),
                 BottomNavigationBarItem(
-                  icon: ImageIcon(
+                  icon: const ImageIcon(
                     AssetImage('assets/images/icon_book.png'),
                   ),
-                  label: 'alhadith',
+                  label: AppLocalizations.of(context)!.hadith_tab,
                 ),
                 BottomNavigationBarItem(
-                  icon: ImageIcon(
+                  icon: const ImageIcon(
                     AssetImage('assets/images/icon_sebha.png'),
                   ),
-                  label: 'AlSebha',
+                  label: AppLocalizations.of(context)!.sebha_tab,
                 ),
                 BottomNavigationBarItem(
-                  icon: ImageIcon(
+                  icon: const ImageIcon(
                     AssetImage('assets/images/icon_radio.png'),
                   ),
-                  label: 'Radio',
+                  label: AppLocalizations.of(context)!.radio_tab,
                 ),
               ],
             ),
           ),
-          body: Container(child: getCurrentPage()),
+          body: Container(child: tabScreens[currentpage]),
         ),
       ],
     );
   }
 
-  Widget getCurrentPage() {
-    if (currentpage == 0) {
-      return QuranTab();
-    } else if (currentpage == 1) {
-      return HadithTab();
-    } else if (currentpage == 2) {
-      return SebhaTab();
-    } else
-      return RadioTab();
-  }
+  List<Widget> tabScreens = [
+    QuranTab(),
+    HadithTab(),
+    SebhaTab(),
+    RadioTab(),
+  ];
 }

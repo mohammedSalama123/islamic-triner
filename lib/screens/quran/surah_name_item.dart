@@ -22,27 +22,23 @@ class SurahNameItem extends StatelessWidget {
         );
       },
       splashColor: MyThemDate.primeryColor,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 80),
-            child: Text(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 80, right: 80),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Text(
               '${ayatName}',
               style: TextStyle(fontSize: 24),
-              textDirection: TextDirection.rtl,
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 80),
-            child: Text(
+            Text(
               "${surahName}",
               style: TextStyle(fontSize: 24),
-              textDirection: TextDirection.rtl,
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

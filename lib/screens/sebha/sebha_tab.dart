@@ -29,24 +29,25 @@ class _SebhaTabState extends State<SebhaTab> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Center(
-          child: GestureDetector(
-            onTap: () {
-              setState(() {
-                if (sebhaIndex < 33) {
-                  sebhaIndex++;
-                } else {
-                  tasbehIndex += 1;
-                  sebhaIndex = 0;
-                  if (tasbehIndex > 3) {
-                    tasbehIndex = 0;
+        RotationTransition(
+          turns: Tween(begin: start, end: start += 0.03)
+              .animate(animationController),
+          child: Center(
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  if (sebhaIndex < 33) {
+                    sebhaIndex++;
+                  } else {
+                    tasbehIndex += 1;
+                    sebhaIndex = 0;
+                    start = 0.0;
+                    if (tasbehIndex > 3) {
+                      tasbehIndex = 0;
+                    }
                   }
-                }
-              });
-            },
-            child: RotationTransition(
-              turns: Tween(begin: start, end: start += 0.03)
-                  .animate(animationController),
+                });
+              },
               child: Stack(
                 alignment: Alignment.topCenter,
                 children: [
@@ -80,7 +81,7 @@ class _SebhaTabState extends State<SebhaTab> with TickerProviderStateMixin {
           alignment: Alignment.center,
           child: Text(
             '$sebhaIndex',
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 24,
               color: Colors.white,
             ),
